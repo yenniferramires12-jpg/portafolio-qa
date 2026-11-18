@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>Portafolio QA — Yennifer Santana Liriano</title>
+    <style>
+      :root {
+        --bg: #faf9fc;
+        --surface: #ffffff;
+        --surface-2: #f3f0f9;
+        --ink: #221d2e;
+        --ink-soft: #4c4560;
+        --ink-faint: #6f6785;
+        --line: #e3ddf0;
+        --accent: #7b3fb8;
+        --accent-strong: #652da0;
+        --accent-soft: #efe6fa;
+        --accent-ink: #5b21b6;
+        --green-bg: #e3f5e9;
+        --green-ink: #166534;
+        --green-line: #a7d8b8;
+        --amber-bg: #fdf0d5;
+        --amber-ink: #8a5a00;
+        --amber-line: #eec96e;
+        --purple-bg: #efe6fa;
+        --purple-ink: #5b21b6;
+        --purple-line: #cdb2ee;
+        --neutral-bg: #eceaf1;
+        --neutral-ink: #453e57;
+        --neutral-line: #cfc9dd;
+        --code-bg: #f1eef7;
+        --notice-bg: #f6eefc;
+        --notice-line: #b98ae0;
+        --shadow: 0 1px 2px rgba(60, 30, 110, 0.06), 0 8px 24px rgba(60, 30, 110, 0.06);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #14101d;
+          --surface: #1d1829;
+          --surface-2: #251e36;
+          --ink: #f0ecf8;
+          --ink-soft: #c9c2dc;
+          --ink-faint: #a79ec0;
+          --line: #342b4d;
+          --accent: #b07fe8;
+          --accent-strong: #c79af2;
+          --accent-soft: #2c2145;
+          --accent-ink: #cfa9f7;
+          --green-bg: #123324;
+          --green-ink: #7ed79b;
+          --green-line: #2c5c40;
+          --amber-bg: #3a2c08;
+          --amber-ink: #f2c94c;
+          --amber-line: #6e5410;
+          --purple-bg: #2c2145;
+          --purple-ink: #cfa9f7;
+          --purple-line: #5a4490;
+          --neutral-bg: #2a2438;
+          --neutral-ink: #c9c2dc;
+          --neutral-line: #4a4066;
+          --code-bg: #2a213d;
+          --notice-bg: #251a38;
+          --notice-line: #7b4fb0;
+          --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 17px;
+        line-height: 1.6;
+      }
+      a { color: var(--accent-ink); }
+      a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+      code {
+        font-family: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+        font-size: 0.86em;
+        background: var(--code-bg);
+        padding: 0.08em 0.35em;
+        border-radius: 4px;
+        overflow-wrap: anywhere;
+      }
+
+      .wrap { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
+
+      /* ---------- Nav ---------- */
+      .nav {
+        position: sticky; top: 0; z-index: 20;
+        background: var(--surface);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav .wrap {
+        display: flex; flex-wrap: wrap; gap: 2px 4px;
+        padding-top: 6px; padding-bottom: 6px;
+      }
+      .nav a {
+        display: inline-flex; align-items: center;
+        min-height: 36px; padding: 4px 10px;
+        color: var(--ink-soft); text-decoration: none;
+        font-size: 0.92rem; font-weight: 600;
+        border-radius: 6px;
+      }
+      .nav a:hover { color: var(--accent-ink); background: var(--accent-soft); }
+
+      /* ---------- Hero ---------- */
+      .hero {
+        background: var(--surface);
+        border-bottom: 1px solid var(--line);
+        padding: 52px 0 44px;
+      }
+      .hero h1 {
+        margin: 0 0 6px;
+        font-size: clamp(2rem, 5.5vw, 3rem);
+        line-height: 1.12; letter-spacing: -0.02em; font-weight: 800;
+      }
+      .hero .role {
+        margin: 0 0 18px;
+        font-size: clamp(1.15rem, 3vw, 1.45rem);
+        color: var(--accent-ink); font-weight: 700;
+      }
+      .hero .lede { max-width: 46rem; margin: 0 0 24px; color: var(--ink-soft); font-size: 1.06rem; }
+      .contact-line {
+        display: flex; flex-wrap: wrap; gap: 6px 22px;
+        margin: 0 0 28px; padding: 0; list-style: none;
+        color: var(--ink-soft); font-size: 0.98rem;
+      }
+      .contact-line a { text-decoration: none; font-weight: 600; }
+      .contact-line a:hover { text-decoration: underline; }
+      .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center;
+        min-height: 48px; padding: 10px 22px;
+        border-radius: 8px; font-weight: 700; font-size: 1rem;
+        text-decoration: none; border: 1.5px solid var(--accent);
+      }
+      .btn-primary { background: var(--accent); color: #fff; }
+      .btn-primary:hover { background: var(--accent-strong); border-color: var(--accent-strong); }
+      @media (prefers-color-scheme: dark) {
+        .btn-primary { color: #1c1030; }
+        .btn-primary:hover { color: #1c1030; }
+      }
+      .btn-ghost { background: transparent; color: var(--accent-ink); }
+      .btn-ghost:hover { background: var(--accent-soft); }
+
+      /* ---------- Sections ---------- */
+      section { padding: 44px 0 8px; scroll-margin-top: 64px; }
+      h2 {
+        margin: 0 0 6px; font-size: 1.7rem; line-height: 1.25;
+        letter-spacing: -0.01em; font-weight: 800;
+      }
+      h2::after {
+        content: ""; display: block; width: 56px; height: 4px;
+        background: var(--accent); border-radius: 2px; margin-top: 10px;
+      }
+      h3 { margin: 0; font-size: 1.22rem; line-height: 1.35; font-weight: 750; }
+      .section-intro { color: var(--ink-soft); max-width: 48rem; margin: 12px 0 0; }
+      p { margin: 0 0 14px; }
+      .muted { color: var(--ink-soft); }
+
+      /* ---------- Honesty notice ---------- */
+      .notice {
+        margin-top: 36px;
+        background: var(--notice-bg);
+        border: 1.5px solid var(--notice-line);
+        border-radius: 10px;
+        padding: 18px 22px;
+      }
+      .notice p { margin: 0; }
+      .notice strong { color: var(--accent-ink); }
+
+      /* ---------- Badges ---------- */
+      .badges { display: flex; flex-wrap: wrap; gap: 8px; }
+      .badge {
+        display: inline-flex; align-items: center;
+        padding: 3px 10px; border-radius: 999px;
+        font-size: 0.74rem; font-weight: 800;
+        letter-spacing: 0.06em; text-transform: uppercase;
+        border: 1px solid;
+        white-space: nowrap;
+      }
+      .badge-green { background: var(--green-bg); color: var(--green-ink); border-color: var(--green-line); }
+      .badge-amber { background: var(--amber-bg); color: var(--amber-ink); border-color: var(--amber-line); }
+      .badge-purple { background: var(--purple-bg); color: var(--purple-ink); border-color: var(--purple-line); }
+      .badge-neutral { background: var(--neutral-bg); color: var(--neutral-ink); border-color: var(--neutral-line); }
+      .badge-sev-media { background: var(--amber-bg); color: var(--amber-ink); border-color: var(--amber-line); text-transform: none; letter-spacing: 0; font-size: 0.8rem; }
+      .badge-sev-baja { background: var(--neutral-bg); color: var(--neutral-ink); border-color: var(--neutral-line); text-transform: none; letter-spacing: 0; font-size: 0.8rem; }
+
+      /* ---------- Service cards ---------- */
+      .cards {
+        display: grid; gap: 16px; margin-top: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 22px;
+        box-shadow: var(--shadow);
+      }
+      .card h3 { margin-bottom: 8px; color: var(--accent-ink); font-size: 1.12rem; }
+      .card p { margin: 0; color: var(--ink-soft); font-size: 0.98rem; }
+      .services-note { margin-top: 20px; color: var(--ink-soft); }
+
+      /* ---------- Projects ---------- */
+      .project {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        padding: 26px;
+        margin-top: 26px;
+      }
+      .project-head {
+        display: flex; flex-wrap: wrap; align-items: flex-start;
+        justify-content: space-between; gap: 10px 16px;
+        margin-bottom: 14px;
+      }
+      .project p { color: var(--ink-soft); }
+      .project p strong { color: var(--ink); }
+      .obs {
+        background: var(--surface-2);
+        border-radius: 8px;
+        padding: 16px 18px;
+        margin-top: 18px;
+      }
+      .obs p { margin: 0; font-size: 0.97rem; }
+      .obs h4 { margin: 0 0 6px; font-size: 1rem; }
+
+      /* ---------- Tables ---------- */
+      .table-wrap {
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        margin-top: 16px;
+        -webkit-overflow-scrolling: touch;
+      }
+      table { border-collapse: collapse; width: 100%; font-size: 0.94rem; }
+      caption { text-align: left; padding: 12px 14px 4px; font-weight: 700; color: var(--ink); }
+      th, td {
+        text-align: left; vertical-align: top;
+        padding: 10px 14px;
+        border-top: 1px solid var(--line);
+      }
+      thead th {
+        background: var(--surface-2);
+        border-top: none;
+        font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em;
+        color: var(--ink-soft);
+        white-space: nowrap;
+      }
+      tbody tr:nth-child(even) { background: color-mix(in srgb, var(--surface-2) 45%, transparent); }
+      td.id, td.method { white-space: nowrap; font-weight: 700; }
+      td.code-cell { white-space: nowrap; font-weight: 700; }
+      .code-2xx { color: var(--green-ink); }
+      .code-err { color: #c0392b; }
+      @media (prefers-color-scheme: dark) { .code-err { color: #ff9d8a; } }
+      td.prio { white-space: nowrap; font-weight: 700; }
+      .table-tc { min-width: 880px; }
+      .table-api { min-width: 720px; }
+      .table-audit { min-width: 620px; }
+
+      /* ---------- Defect reports ---------- */
+      .defect {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 20px 22px;
+        margin-top: 16px;
+        background: var(--surface);
+      }
+      .defect-head {
+        display: flex; flex-wrap: wrap; align-items: center;
+        gap: 8px 12px; margin-bottom: 12px;
+      }
+      .defect-head h4 { margin: 0; font-size: 1.05rem; line-height: 1.4; }
+      .defect dl { margin: 0; display: grid; gap: 10px; }
+      .defect dt { font-weight: 700; font-size: 0.9rem; color: var(--accent-ink); }
+      .defect dd { margin: 2px 0 0; color: var(--ink-soft); font-size: 0.97rem; }
+      .defect .note { margin: 12px 0 0; font-size: 0.94rem; color: var(--ink-soft); font-style: italic; }
+
+      /* ---------- Methodology ---------- */
+      .method {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        padding: 26px;
+        margin-top: 24px;
+      }
+      .method ol { margin: 0 0 16px; padding-left: 1.4em; }
+      .method li { margin-bottom: 10px; color: var(--ink-soft); }
+      .method li strong { color: var(--ink); }
+      .method p { margin: 0; color: var(--ink-soft); }
+
+      /* ---------- Skills ---------- */
+      .skill-group { margin-top: 22px; }
+      .skill-group h3 { font-size: 1.05rem; margin-bottom: 12px; }
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+      .chips li {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 6px 14px;
+        font-size: 0.93rem; font-weight: 600; color: var(--ink-soft);
+      }
+      .skills-note { margin-top: 20px; color: var(--ink-soft); font-size: 0.97rem; }
+
+      /* ---------- Experience / education ---------- */
+      .job {
+        border-left: 3px solid var(--accent);
+        padding: 2px 0 2px 20px;
+        margin-top: 28px;
+      }
+      .job h3 { font-size: 1.12rem; }
+      .job .org { font-weight: 700; color: var(--accent-ink); margin: 2px 0 0; }
+      .job .meta { color: var(--ink-faint); font-size: 0.93rem; margin: 2px 0 8px; }
+      .job p.desc { color: var(--ink-soft); margin: 0; }
+      .edu-item { margin-top: 24px; }
+      .edu-item h3 { font-size: 1.12rem; }
+      .edu-item .org { font-weight: 600; color: var(--ink-soft); margin: 2px 0 0; }
+      .edu-item .meta { color: var(--ink-faint); font-size: 0.93rem; margin: 2px 0 0; }
+
+      /* ---------- Footer ---------- */
+      footer {
+        margin-top: 56px;
+        background: var(--surface);
+        border-top: 1px solid var(--line);
+        padding: 44px 0 40px;
+      }
+      footer h2 { font-size: 1.5rem; }
+      footer .cta-text { max-width: 44rem; color: var(--ink-soft); margin-top: 14px; font-size: 1.05rem; }
+      footer .contact-line { margin-bottom: 18px; }
+      footer .fineprint {
+        border-top: 1px solid var(--line);
+        padding-top: 16px; margin: 0;
+        color: var(--ink-faint); font-size: 0.9rem;
+      }
+
+      @media (max-width: 640px) {
+        body { font-size: 16px; }
+        .hero { padding: 36px 0 32px; }
+        section { padding-top: 36px; }
+        .project, .method { padding: 20px 16px; }
+        .defect { padding: 16px; }
+        .nav a { padding: 4px 8px; font-size: 0.88rem; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <div class="wrap">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#metodologia">Metodología</a>
+        <a href="#habilidades">Habilidades</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#educacion">Educación</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="wrap">
+        <h1>Yennifer Santana Liriano</h1>
+        <p class="role">QA Junior / Tester de software</p>
+        <p class="lede">Analista de calidad con experiencia en auditoría, monitoreo y verificación de cumplimiento en el sector bancario, y práctica en pruebas de software en la plataforma de crowdtesting uTest. Reporto hallazgos con evidencia, pasos claros y resultados verificables.</p>
+        <ul class="contact-line">
+          <li>Santo Domingo, República Dominicana</li>
+          <li><a href="mailto:yennifer0101@hotmail.com">yennifer0101@hotmail.com</a></li>
+          <li><a href="tel:+18093607302">+1 (809) 360-7302</a></li>
+          <li><a href="https://www.linkedin.com/in/yennifer-santana">linkedin.com/in/yennifer-santana</a></li>
+        </ul>
+        <div class="cta">
+          <a class="btn btn-primary" href="mailto:yennifer0101@hotmail.com">Solicitar cotización</a>
+          <a class="btn btn-ghost" href="#proyectos">Ver proyectos</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+
+      <div class="notice" role="note">
+        <p><strong>Nota de honestidad:</strong> todos los proyectos de este portafolio se realizaron sobre aplicaciones demo públicas de práctica. Los resultados rotulados «Ejecutado» corresponden a pruebas reales realizadas el 18 de noviembre de 2026, con evidencia guardada. Los rotulados «Diseñado» son casos de prueba escritos sin ejecutar. Ningún resultado corresponde a un cliente real.</p>
+      </div>
+
+      <section id="sobre-mi">
+        <h2>Sobre mí</h2>
+        <p class="section-intro">Soy una profesional analítica y orientada a resultados, con trayectoria en control de calidad, operaciones de servicios financieros, almacén y líneas de producción. Desde marzo de 2023 trabajo como Call Monitoring Officer en el área de cobranzas de Banco Santa Cruz, donde audito la calidad de las llamadas, verifico el cumplimiento de normas internas y elaboro reportes de calidad. Antes fui Quality Analyst en Newtech / Banco Popular Dominicano, evaluando estándares de llamadas comerciales.</p>
+        <p class="section-intro">Mi experiencia combina la calidad en centros de contacto bancarios con control de calidad en producción y logística, lo que me da una visión práctica de los procesos: cómo se ejecutan, dónde fallan y cómo se mide que estén bien hechos. Además, he realizado pruebas de software en la plataforma uTest y estudio el Técnico Superior en Computación en la Nube y Virtualización en UNICARIBE (en curso, estimado 2027).</p>
+        <p class="section-intro"><strong>Idiomas:</strong> español (lengua materna), inglés A2, portugués A2.</p>
+      </section>
+
+      <section id="servicios">
+        <h2>Servicios</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Pruebas manuales</h3>
+            <p>Ejecución de casos de prueba sobre aplicaciones web y móviles, explorando flujos reales de usuario para encontrar fallos antes de que lleguen a sus clientes.</p>
+          </article>
+          <article class="card">
+            <h3>Pruebas de API</h3>
+            <p>Verificación de endpoints REST: códigos de estado, respuestas, creación, actualización y eliminación de recursos, y comportamiento ante datos inválidos.</p>
+          </article>
+          <article class="card">
+            <h3>Reporte de defectos</h3>
+            <p>Reportes claros y reproducibles: título, severidad, pasos, resultado esperado contra resultado real, evidencia y entorno. Sin reportes vagos ni duplicados.</p>
+          </article>
+          <article class="card">
+            <h3>Pruebas de regresión</h3>
+            <p>Re-ejecución de casos clave después de cada cambio, para confirmar que lo que funcionaba sigue funcionando y que los defectos corregidos no volvieron.</p>
+          </article>
+          <article class="card">
+            <h3>Pruebas de aceptación (UAT)</h3>
+            <p>Validación de que la aplicación cumple lo que el negocio pidió, desde el punto de vista del usuario final, con criterios de aceptación claros.</p>
+          </article>
+        </div>
+        <p class="services-note">Para solicitar una cotización según el alcance de su proyecto, escríbame por correo: <a href="mailto:yennifer0101@hotmail.com">yennifer0101@hotmail.com</a>.</p>
+      </section>
+
+      <section id="proyectos">
+        <h2>Proyectos</h2>
+
+        <article class="project">
+          <div class="project-head">
+            <h3>Proyecto 1 — Pruebas de API REST</h3>
+            <div class="badges">
+              <span class="badge badge-green">Ejecutado</span>
+              <span class="badge badge-purple">App demo</span>
+            </div>
+          </div>
+          <p><strong>Aplicación demo:</strong> JSONPlaceholder (jsonplaceholder.typicode.com), API pública de práctica.</p>
+          <p><strong>Fecha de ejecución:</strong> 18 de noviembre de 2026. <strong>Herramienta:</strong> curl 8.5.0 desde línea de comandos.</p>
+          <p>Se ejecutaron 10 llamadas documentadas: 8 devolvieron códigos 2xx y 2 devolvieron 404, en cada caso el código esperado para la situación probada.</p>
+          <div class="table-wrap">
+            <table class="table-api">
+              <thead>
+                <tr><th>ID</th><th>Método</th><th>Endpoint</th><th>Código</th><th>Resultado observado</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="id">API-01</td><td class="method">GET</td><td><code>/posts</code></td><td class="code-cell code-2xx">200</td><td>Devuelve una lista de 100 publicaciones en formato JSON (27,520 bytes).</td></tr>
+                <tr><td class="id">API-02</td><td class="method">GET</td><td><code>/posts/1</code></td><td class="code-cell code-2xx">200</td><td>Devuelve la publicación 1 con los campos userId, id, title y body.</td></tr>
+                <tr><td class="id">API-03</td><td class="method">GET</td><td><code>/posts/9999</code></td><td class="code-cell code-err">404</td><td>Recurso inexistente: devuelve cuerpo vacío {}.</td></tr>
+                <tr><td class="id">API-04</td><td class="method">POST</td><td><code>/posts</code></td><td class="code-cell code-2xx">201</td><td>Crea el recurso y devuelve id 101 con los datos enviados. Respuesta lenta en esta ejecución: 186.5 s (ver observación).</td></tr>
+                <tr><td class="id">API-05</td><td class="method">GET</td><td><code>/posts/101</code></td><td class="code-cell code-err">404</td><td>El recurso creado en API-04 no persiste: el GET posterior devuelve 404.</td></tr>
+                <tr><td class="id">API-06</td><td class="method">PUT</td><td><code>/posts/1</code></td><td class="code-cell code-2xx">200</td><td>Devuelve el recurso con todos los datos actualizados según lo enviado.</td></tr>
+                <tr><td class="id">API-07</td><td class="method">PATCH</td><td><code>/posts/1</code></td><td class="code-cell code-2xx">200</td><td>Actualiza solo el título; los demás campos se conservan intactos.</td></tr>
+                <tr><td class="id">API-08</td><td class="method">DELETE</td><td><code>/posts/1</code></td><td class="code-cell code-2xx">200</td><td>Devuelve cuerpo vacío {}.</td></tr>
+                <tr><td class="id">API-09</td><td class="method">GET</td><td><code>/posts?userId=1</code></td><td class="code-cell code-2xx">200</td><td>El filtro funciona: devuelve 10 publicaciones, todas con userId igual a 1.</td></tr>
+                <tr><td class="id">API-10</td><td class="method">POST</td><td><code>/posts</code> (cuerpo {})</td><td class="code-cell code-2xx">201</td><td>Acepta el cuerpo vacío y devuelve solo {"id": 101}: sin validación de campos.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="obs">
+            <h4>Observaciones (no son defectos)</h4>
+            <p>La no persistencia de API-05 y la falta de validación de API-10 son el comportamiento documentado de esta API demo, que no guarda cambios; el tiempo de respuesta de API-04 (186.5 s) fue una anomalía de una sola muestra (las demás llamadas tardaron entre 0.25 s y 1.6 s) y no se concluye un defecto de rendimiento sin más mediciones; el 404 de API-03 devuelve un cuerpo vacío {} sin mensaje de error descriptivo.</p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3>Proyecto 2 — Auditoría de HTML y accesibilidad</h3>
+            <div class="badges">
+              <span class="badge badge-green">Ejecutado</span>
+              <span class="badge badge-purple">App demo</span>
+            </div>
+          </div>
+          <p><strong>Sitio demo:</strong> The Internet (the-internet.herokuapp.com), sitio público de práctica para pruebas.</p>
+          <p><strong>Fecha:</strong> 18 de noviembre de 2026.</p>
+          <p>Se descargaron 8 páginas y se analizó su HTML real: imágenes sin atributo alt, controles de formulario sin etiqueta asociada, orden de encabezados y estado de los enlaces internos (verificado con curl).</p>
+          <div class="table-wrap">
+            <table class="table-audit">
+              <thead>
+                <tr><th>Verificación</th><th>Alcance</th><th>Resultado</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Imágenes sin atributo alt</strong></td><td>11 imágenes en 8 páginas</td><td>3 imágenes sin alt, todas en la página /broken_images.</td></tr>
+                <tr><td><strong>Imágenes rotas</strong></td><td>3 URL de imagen</td><td>2 devuelven HTTP 404 (asdf.jpg, hjkl.jpg); 1 devuelve 200.</td></tr>
+                <tr><td><strong>Controles sin etiqueta asociada</strong></td><td>8 controles de formulario</td><td>4 sin etiqueta (2 casillas, 1 lista desplegable, 1 campo numérico); 4 con etiqueta correcta.</td></tr>
+                <tr><td><strong>Orden de encabezados</strong></td><td>8 páginas</td><td>2 páginas con salto de h2 a h4 (login y forgot_password); 5 páginas inician en h3 sin h1 ni h2.</td></tr>
+                <tr><td><strong>Enlaces internos</strong></td><td>77 enlaces</td><td>74 devuelven 200; 3 devuelven 401 por exigir autenticación HTTP (por diseño). 0 enlaces rotos.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="obs">
+            <h4>Nota</h4>
+            <p>Las páginas de inicio de sesión y de recuperación de contraseña tienen etiquetas label for correctamente asociadas a sus campos, y la página principal ordena sus encabezados h1 → h2 correctamente. La página /broken_images es una página de práctica diseñada para contener imágenes rotas: la auditoría detectó correctamente los dos recursos 404.</p>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3>Proyecto 3 — Suite de casos de prueba para tienda en línea</h3>
+            <div class="badges">
+              <span class="badge badge-amber">Diseñado</span>
+              <span class="badge badge-purple">App demo</span>
+            </div>
+          </div>
+          <p><strong>Aplicación demo:</strong> Swag Labs (saucedemo.com), tienda de práctica para pruebas.</p>
+          <p>Se diseñaron 13 casos de prueba manuales que cubren inicio de sesión, catálogo, carrito y checkout. Estos casos fueron diseñados, no ejecutados: no se afirma ningún resultado de ejecución.</p>
+          <div class="table-wrap">
+            <table class="table-tc">
+              <thead>
+                <tr><th>ID</th><th>Caso de prueba</th><th>Precondiciones</th><th>Pasos</th><th>Resultado esperado</th><th>Prioridad</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="id">TC-01</td><td>Inicio de sesión con credenciales válidas</td><td>Estar en la página de login.</td><td>1. Escribir un usuario válido. 2. Escribir la contraseña válida. 3. Pulsar Login.</td><td>Se muestra la página de inventario con la lista de productos.</td><td class="prio">Alta</td></tr>
+                <tr><td class="id">TC-02</td><td>Inicio de sesión con contraseña incorrecta</td><td>Estar en la página de login.</td><td>1. Escribir un usuario válido. 2. Escribir una contraseña incorrecta. 3. Pulsar Login.</td><td>Se muestra un mensaje de error y no se entra a la tienda.</td><td class="prio">Alta</td></tr>
+                <tr><td class="id">TC-03</td><td>Inicio de sesión con usuario bloqueado</td><td>Estar en la página de login.</td><td>1. Escribir el usuario bloqueado. 2. Escribir su contraseña. 3. Pulsar Login.</td><td>Se muestra un mensaje indicando que el usuario está bloqueado.</td><td class="prio">Media</td></tr>
+                <tr><td class="id">TC-04</td><td>Inicio de sesión con campos vacíos</td><td>Estar en la página de login.</td><td>1. Dejar usuario y contraseña vacíos. 2. Pulsar Login.</td><td>Se muestra un mensaje indicando que el usuario es obligatorio.</td><td class="prio">Media</td></tr>
+                <tr><td class="id">TC-05</td><td>Agregar un producto al carrito</td><td>Sesión iniciada, en inventario.</td><td>1. Pulsar «Add to cart» en un producto.</td><td>El contador del carrito muestra 1 y el botón cambia a «Remove».</td><td class="prio">Alta</td></tr>
+                <tr><td class="id">TC-06</td><td>Quitar un producto del carrito</td><td>Carrito con 1 producto.</td><td>1. Abrir el carrito. 2. Pulsar «Remove» en el producto.</td><td>El carrito queda vacío y el contador desaparece.</td><td class="prio">Media</td></tr>
+                <tr><td class="id">TC-07</td><td>Ver el detalle de un producto</td><td>Sesión iniciada, en inventario.</td><td>1. Pulsar el nombre de un producto.</td><td>Se muestra la página de detalle con nombre, descripción, precio e imagen.</td><td class="prio">Baja</td></tr>
+                <tr><td class="id">TC-08</td><td>Ordenar productos por precio de menor a mayor</td><td>Sesión iniciada, en inventario.</td><td>1. Elegir «Price (low to high)» en el ordenamiento.</td><td>Los productos quedan ordenados por precio ascendente.</td><td class="prio">Media</td></tr>
+                <tr><td class="id">TC-09</td><td>Checkout completo con datos válidos</td><td>Carrito con al menos 1 producto.</td><td>1. Pulsar Checkout. 2. Completar nombre, apellido y código postal. 3. Pulsar Continue. 4. Revisar el resumen y pulsar Finish.</td><td>Se muestra la confirmación «Thank you for your order!» y el carrito queda vacío.</td><td class="prio">Alta</td></tr>
+                <tr><td class="id">TC-10</td><td>Checkout con campos obligatorios vacíos</td><td>Carrito con al menos 1 producto.</td><td>1. Pulsar Checkout. 2. Dejar los campos vacíos. 3. Pulsar Continue.</td><td>Se muestra un mensaje de error y no se avanza al resumen.</td><td class="prio">Alta</td></tr>
+                <tr><td class="id">TC-11</td><td>Cancelar el checkout y volver al carrito</td><td>En la pantalla de datos del checkout.</td><td>1. Pulsar Cancel.</td><td>Se vuelve a la página del carrito con los productos intactos.</td><td class="prio">Media</td></tr>
+                <tr><td class="id">TC-12</td><td>Cerrar sesión</td><td>Sesión iniciada.</td><td>1. Abrir el menú lateral. 2. Pulsar Logout.</td><td>Se vuelve a la página de login y la sesión queda cerrada.</td><td class="prio">Media</td></tr>
+                <tr><td class="id">TC-13</td><td>El carrito conserva los productos al navegar</td><td>Carrito con 2 productos.</td><td>1. Volver al inventario. 2. Abrir el carrito de nuevo.</td><td>Los 2 productos siguen en el carrito.</td><td class="prio">Media</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-head">
+            <h3>Reportes de defectos</h3>
+            <div class="badges">
+              <span class="badge badge-neutral">Hallazgos reales</span>
+              <span class="badge badge-purple">App demo</span>
+            </div>
+          </div>
+          <p>Solo hallazgos reales de la auditoría del Proyecto 2, verificados en el HTML descargado o con códigos de estado reales.</p>
+          <p><strong>Entorno:</strong> 18 de noviembre de 2026, análisis del HTML con curl 8.5.0 y Python (HTMLParser), sitio demo The Internet.</p>
+
+          <div class="defect">
+            <div class="defect-head">
+              <h4>DEF-01 — Dos imágenes devuelven error 404 en la página de imágenes</h4>
+              <span class="badge badge-sev-media">Severidad: Media</span>
+            </div>
+            <dl>
+              <div><dt>Pasos para reproducir</dt><dd>1. Abrir la página /broken_images del sitio demo. 2. Observar que dos imágenes no cargan. 3. Comprobar las URL con curl.</dd></div>
+              <div><dt>Resultado esperado</dt><dd>Todas las imágenes referenciadas existen y devuelven HTTP 200.</dd></div>
+              <div><dt>Resultado real</dt><dd>asdf.jpg y hjkl.jpg devuelven HTTP 404.</dd></div>
+              <div><dt>Evidencia</dt><dd>Códigos de estado obtenidos con curl: asdf.jpg → 404, hjkl.jpg → 404, img/avatar-blank.jpg → 200.</dd></div>
+            </dl>
+            <p class="note">Nota: es una página de práctica diseñada para este ejercicio; el hallazgo demuestra la detección, no un fallo de un producto real.</p>
+          </div>
+
+          <div class="defect">
+            <div class="defect-head">
+              <h4>DEF-02 — Tres imágenes sin atributo alt</h4>
+              <span class="badge badge-sev-media">Severidad: Media</span>
+            </div>
+            <dl>
+              <div><dt>Pasos para reproducir</dt><dd>1. Abrir la página /broken_images. 2. Inspeccionar las etiquetas img.</dd></div>
+              <div><dt>Resultado esperado</dt><dd>Cada imagen tiene un atributo alt descriptivo para lectores de pantalla.</dd></div>
+              <div><dt>Resultado real</dt><dd>Tres imágenes no tienen atributo alt: asdf.jpg, hjkl.jpg e img/avatar-blank.jpg (esta última sí carga, HTTP 200).</dd></div>
+              <div><dt>Evidencia</dt><dd>Fragmentos HTML sin atributo alt en los tres img.</dd></div>
+            </dl>
+          </div>
+
+          <div class="defect">
+            <div class="defect-head">
+              <h4>DEF-03 — Casillas de verificación sin etiqueta asociada</h4>
+              <span class="badge badge-sev-media">Severidad: Media</span>
+            </div>
+            <dl>
+              <div><dt>Pasos para reproducir</dt><dd>1. Abrir la página /checkboxes. 2. Inspeccionar el formulario.</dd></div>
+              <div><dt>Resultado esperado</dt><dd>Cada casilla tiene una etiqueta label asociada, para que sea identificable con lector de pantalla y pulsable por su texto.</dd></div>
+              <div><dt>Resultado real</dt><dd>Las dos casillas no tienen id ni label; el texto «checkbox 1» y «checkbox 2» es texto plano fuera de la etiqueta.</dd></div>
+              <div><dt>Evidencia</dt><dd><code>&lt;input type="checkbox"&gt; checkbox 1</code> y <code>&lt;input type="checkbox" checked&gt; checkbox 2</code>.</dd></div>
+            </dl>
+          </div>
+
+          <div class="defect">
+            <div class="defect-head">
+              <h4>DEF-04 — Lista desplegable sin etiqueta asociada</h4>
+              <span class="badge badge-sev-media">Severidad: Media</span>
+            </div>
+            <dl>
+              <div><dt>Pasos para reproducir</dt><dd>1. Abrir la página /dropdown. 2. Inspeccionar el elemento select.</dd></div>
+              <div><dt>Resultado esperado</dt><dd>El desplegable tiene una etiqueta label asociada a su id.</dd></div>
+              <div><dt>Resultado real</dt><dd>El elemento <code>&lt;select id="dropdown"&gt;</code> no tiene ninguna etiqueta label asociada en la página.</dd></div>
+              <div><dt>Evidencia</dt><dd>Fragmento <code>&lt;select id="dropdown"&gt;</code>, sin elemento label en la página.</dd></div>
+            </dl>
+          </div>
+
+          <div class="defect">
+            <div class="defect-head">
+              <h4>DEF-05 — Campo numérico sin etiqueta ni identificador</h4>
+              <span class="badge badge-sev-media">Severidad: Media</span>
+            </div>
+            <dl>
+              <div><dt>Pasos para reproducir</dt><dd>1. Abrir la página /inputs. 2. Inspeccionar el campo de entrada.</dd></div>
+              <div><dt>Resultado esperado</dt><dd>El campo tiene etiqueta asociada e identificador, para que sea operable y anunciable.</dd></div>
+              <div><dt>Resultado real</dt><dd>El campo es <code>&lt;input type=number&gt;</code>, sin id, sin name y sin etiqueta asociada.</dd></div>
+              <div><dt>Evidencia</dt><dd>Fragmento <code>&lt;input type=number&gt;</code>.</dd></div>
+            </dl>
+          </div>
+
+          <div class="defect">
+            <div class="defect-head">
+              <h4>DEF-06 — Orden de encabezados incorrecto en varias páginas</h4>
+              <span class="badge badge-sev-baja">Severidad: Baja</span>
+            </div>
+            <dl>
+              <div><dt>Pasos para reproducir</dt><dd>1. Abrir las páginas /login y /forgot_password. 2. Revisar la jerarquía de encabezados. 3. Repetir en /checkboxes, /dropdown, /inputs, /broken_images y /tables.</dd></div>
+              <div><dt>Resultado esperado</dt><dd>Los encabezados siguen un orden sin saltos (h1 → h2 → h3) y cada página tiene un h1.</dd></div>
+              <div><dt>Resultado real</dt><dd>/login y /forgot_password pasan de h2 directamente a h4 (se omite h3); cinco páginas inician su contenido en h3, sin h1 ni h2.</dd></div>
+              <div><dt>Evidencia</dt><dd>Secuencias de encabezados extraídas del HTML: login y forgot_password = [h2, h4]; checkboxes, dropdown, inputs y broken_images = [h3]; tables = [h3, h4, h4]. La página principal sí ordena h1 → h2 correctamente.</dd></div>
+            </dl>
+          </div>
+        </article>
+      </section>
+
+      <section id="metodologia">
+        <h2>Mi metodología para reportar un defecto</h2>
+        <div class="method">
+          <ol>
+            <li><strong>Título claro:</strong> qué falla y dónde, en una frase.</li>
+            <li><strong>Severidad:</strong> qué tanto afecta al usuario y al negocio.</li>
+            <li><strong>Pasos para reproducir:</strong> numerados, desde el inicio, sin pasos implícitos.</li>
+            <li><strong>Resultado esperado contra resultado real:</strong> qué debería pasar y qué pasó en realidad.</li>
+            <li><strong>Evidencia:</strong> capturas, fragmentos de código o códigos de estado reales.</li>
+            <li><strong>Entorno:</strong> fecha, herramienta, navegador o dispositivo y versión, para que el hallazgo sea repetible.</li>
+          </ol>
+          <p>Antes de reportar, verifico que el defecto sea reproducible y que no esté duplicado. Si un comportamiento es propio del diseño de la aplicación, lo registro como observación y no como defecto.</p>
+        </div>
+      </section>
+
+      <section id="habilidades">
+        <h2>Habilidades y herramientas</h2>
+        <div class="skill-group">
+          <h3>Competencias de calidad</h3>
+          <ul class="chips">
+            <li>Pruebas manuales</li>
+            <li>Diseño de casos de prueba</li>
+            <li>Reporte de defectos</li>
+            <li>Pruebas de API</li>
+            <li>Pruebas de regresión</li>
+            <li>Pruebas de aceptación (UAT)</li>
+            <li>Auditoría y monitoreo de calidad</li>
+            <li>Cumplimiento y normas</li>
+            <li>Elaboración de reportes</li>
+            <li>Capacitación de personal</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Herramientas</h3>
+          <ul class="chips">
+            <li>curl</li>
+            <li>JSON</li>
+            <li>HTML</li>
+            <li>Línea de comandos (Linux)</li>
+            <li>Aspect</li>
+            <li>VEO</li>
+            <li>SQL Server</li>
+            <li>Microsoft Excel</li>
+            <li>Microsoft Word</li>
+          </ul>
+        </div>
+        <p class="skills-note">Las herramientas de pruebas (curl, JSON, HTML y línea de comandos) corresponden al trabajo demostrado en los proyectos de este portafolio. Aspect, VEO, SQL Server y Microsoft Office corresponden a la experiencia registrada en mi CV. No se listan herramientas que no he usado.</p>
+      </section>
+
+      <section id="experiencia">
+        <h2>Experiencia</h2>
+
+        <div class="job">
+          <h3>Tester freelance — Pruebas de software</h3>
+          <p class="org">uTest (plataforma de crowdtesting)</p>
+          <p class="desc">Ejecución de pruebas de aplicaciones y sitios web y reporte de defectos en ciclos de prueba reales de la plataforma.</p>
+        </div>
+
+        <div class="job">
+          <h3>Call Monitoring Officer (Área de Cobranzas)</h3>
+          <p class="org">Banco Santa Cruz</p>
+          <p class="meta">Santo Domingo, República Dominicana · Marzo 2023 — Presente</p>
+          <p class="desc">Auditoría y evaluación de la calidad operativa de las llamadas de los agentes de cobranzas, asegurando el cumplimiento de los estándares de servicio y las normas internas. Análisis de indicadores de riesgo operativo y seguimiento de reportes VEO con sistemas especializados de monitoreo (como Aspect). Diseño y facilitación de programas de capacitación para el personal nuevo.</p>
+        </div>
+
+        <div class="job">
+          <h3>Quality Analyst</h3>
+          <p class="org">Newtech / Banco Popular Dominicano</p>
+          <p class="meta">Santo Domingo, República Dominicana · 2022 — 2023</p>
+          <p class="desc">Evaluación de estándares en llamadas comerciales de equipos de ventas externos, enfocadas en seguros, tarjetas de crédito y préstamos personales. Elaboración de planes de mejora continua y capacitación operativa a nuevos colaboradores.</p>
+        </div>
+
+        <div class="job">
+          <h3>Sales Representative</h3>
+          <p class="org">Newtech / Banco Popular Dominicano</p>
+          <p class="meta">Santo Domingo, República Dominicana · 2020 — 2022</p>
+          <p class="desc">Gestión comercial, atención al cliente y colocación activa de productos financieros, tarjetas de crédito, préstamos y pólizas de seguros, cumpliendo metas mensuales de productividad.</p>
+        </div>
+
+        <div class="job">
+          <h3>Warehouse and Logistics Assistant</h3>
+          <p class="org">Centro de Distribución Logística del Caribe</p>
+          <p class="meta">Santo Domingo, República Dominicana</p>
+          <p class="desc">Control y gestión de inventario, recepción de mercancía, registro preciso de entradas y salidas y organización del almacén. Preparación, empaque y despacho de pedidos bajo tiempos de entrega estrictos y normas de seguridad.</p>
+        </div>
+
+        <div class="job">
+          <h3>Production Line &amp; Quality Control Operator</h3>
+          <p class="org">Planta Procesadora de Alimentos y Carnes (Proalca)</p>
+          <p class="meta">Santo Domingo, República Dominicana</p>
+          <p class="desc">Operación de puestos en líneas de procesamiento, empaque y clasificación de productos alimenticios y cárnicos bajo estrictos estándares de higiene y manipulación (GMP / BPM). Inspección visual de calidad de productos terminados, control de peso, sellado y verificación de lotes antes del almacenamiento y la distribución.</p>
+        </div>
+      </section>
+
+      <section id="educacion">
+        <h2>Educación</h2>
+        <div class="edu-item">
+          <h3>Técnico Superior en Computación en la Nube y Virtualización</h3>
+          <p class="org">Universidad del Caribe (UNICARIBE)</p>
+          <p class="meta">En curso — Estimado 2027</p>
+        </div>
+        <div class="edu-item">
+          <h3>Bachillerato (High School Diploma)</h3>
+          <p class="org">Misión Tú Puedes</p>
+          <p class="meta">2001 — 2014</p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer id="contacto">
+      <div class="wrap">
+        <h2>Contacto</h2>
+        <p class="cta-text">¿Necesita probar su aplicación o su sitio web? Escríbame y le preparo una cotización según el alcance de su proyecto.</p>
+        <ul class="contact-line">
+          <li><a href="mailto:yennifer0101@hotmail.com">yennifer0101@hotmail.com</a></li>
+          <li><a href="tel:+18093607302">+1 (809) 360-7302</a></li>
+          <li><a href="https://www.linkedin.com/in/yennifer-santana">linkedin.com/in/yennifer-santana</a></li>
+          <li>Santo Domingo, República Dominicana</li>
+        </ul>
+        <p class="fineprint">Portafolio preparado en noviembre de 2026. Proyectos ejecutados sobre aplicaciones demo públicas de práctica; ningún resultado corresponde a un cliente real.</p>
+      </div>
+    </footer>
+
+  </body>
+</html>
